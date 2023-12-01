@@ -48,45 +48,45 @@ typedef enum {
 
 const hmc472_gpio_t hmc472_gpio_ch_a[2] = {
   { 
-    .gpio_pin_v6 = PA0,
-    .gpio_pin_v5 = PA0,
-    .gpio_pin_v4 = PA0,
-    .gpio_pin_v3 = PA0,
-    .gpio_pin_v2 = PA0,
-    .gpio_pin_v1 = PA0,
+    .gpio_pin_v6 = PB14,
+    .gpio_pin_v5 = PB15,
+    .gpio_pin_v4 = PA10,
+    .gpio_pin_v3 = PA11,
+    .gpio_pin_v2 = PA12,
+    .gpio_pin_v1 = PA15,
   },
   { 
-    .gpio_pin_v6 = PA0,
-    .gpio_pin_v5 = PA0,
-    .gpio_pin_v4 = PA0,
-    .gpio_pin_v3 = PA0,
-    .gpio_pin_v2 = PA0,
-    .gpio_pin_v1 = PA0,
+    .gpio_pin_v6 = PB3,
+    .gpio_pin_v5 = PB4,
+    .gpio_pin_v4 = PB5,
+    .gpio_pin_v3 = PB6,
+    .gpio_pin_v2 = PB7,
+    .gpio_pin_v1 = PB8,
   },
 };
 
 const hmc472_gpio_t hmc472_gpio_ch_b[2] = {
   { 
-    .gpio_pin_v6 = PA0,
-    .gpio_pin_v5 = PA0,
-    .gpio_pin_v4 = PA0,
-    .gpio_pin_v3 = PA0,
-    .gpio_pin_v2 = PA0,
-    .gpio_pin_v1 = PA0,
+    .gpio_pin_v6 = PB2,
+    .gpio_pin_v5 = PB12,
+    .gpio_pin_v4 = PB13,
+    .gpio_pin_v3 = PA5,
+    .gpio_pin_v2 = PA4,
+    .gpio_pin_v1 = PA3,
   },
   { 
-    .gpio_pin_v6 = PA0,
-    .gpio_pin_v5 = PA0,
+    .gpio_pin_v6 = PA2,
+    .gpio_pin_v5 = PA1,
     .gpio_pin_v4 = PA0,
-    .gpio_pin_v3 = PA0,
-    .gpio_pin_v2 = PA0,
-    .gpio_pin_v1 = PA0,
+    .gpio_pin_v3 = PC15,
+    .gpio_pin_v2 = PC14,
+    .gpio_pin_v1 = PC13,
   },
 };
 
 
 HMC472 hmc472_ch_a(hmc472_gpio_ch_a);
-HMC472 hmc472_ch_b(hmc472_gpio_ch_a);
+HMC472 hmc472_ch_b(hmc472_gpio_ch_b);
 
 CRC16 crc;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
@@ -161,13 +161,13 @@ void update_lcd()
   float value_a = hmc472_ch_a.GetValueDb();
   float value_b = hmc472_ch_b.GetValueDb();
 
-  lcd.setCursor(1, 1);
+  lcd.setCursor(9, 1);
   lcd.write(sm_selection == SM_SEL_CHA_DB? 0x7E: ' ');
   if(value_a < 10)   lcd.write(' ');
   lcd.print(value_a, 1);
   lcd.print("dB");
 
-  lcd.setCursor(9, 1);
+  lcd.setCursor(1, 1);
   lcd.write(sm_selection == SM_SEL_CHB_DB? 0x7E: ' ');
   if(value_b < 10)   lcd.write(' ');
   lcd.print(value_b, 1);

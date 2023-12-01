@@ -17,7 +17,7 @@ class HMC472 {
 public:
     HMC472(const hmc472_gpio_t* gpio);
     int GetMinIndex()   { return 0;                   }
-    int GetMaxIndex()   { return 64 * HMC472_IC_QTY;  }
+    int GetMaxIndex()   { return 63 * HMC472_IC_QTY;  }
     int GetIndex()      { return m_index; }
     void Increase()     { SetIndex(GetIndex() + 1); }
     void Decrease()     { SetIndex(GetIndex() - 1); }

@@ -35,13 +35,13 @@ void HMC472::SetIndex(int index)
         int32_t* ptr = (int32_t*)&p_gpio[0];
         for(uint8_t j = 0; j < 6; j++)
         {
-            digitalWrite(*ptr++, (value_a & (1<<j)) ? HIGH: LOW);
+            digitalWrite(*ptr++, (value_a & (1<<j)) ? LOW: HIGH);
         }
 
         ptr = (int32_t*)&p_gpio[1];
         for(uint8_t j = 0; j < 6; j++)
         {
-            digitalWrite(*ptr++, (value_b & (1<<j)) ? HIGH: LOW);
+            digitalWrite(*ptr++, (value_b & (1<<j)) ? LOW: HIGH);
         }
     }
 }
